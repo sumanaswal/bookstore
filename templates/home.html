@@ -5,11 +5,16 @@ Homepage
 {% block content %}
 <div class="jumbotron">
     <h1 class="display-3">Book Store</h1>
-    <p class="lead">Books for everyone</p>
-    <hr class="my-2">
-    <p></p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+    {% if user.is_authenticated %}
+        <p class="lead">Hi, {{ user.username }}</p>
+        <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+    {% else %}
+        <p class="lead">You are not logged in..</p>
+        <hr class="my-2">
+        
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Sign in</a>
+       
+            <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
+    {% endif %}
 </div>
 {% endblock content %}
