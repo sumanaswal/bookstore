@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title%}
 Homepage
 {% endblock title %}
 {% block content %}
 <div class="jumbotron">
     <h1 class="display-3">Book Store</h1>
+    <img src="{% static 'images/django.jpeg' %}" alt="">
     {% if user.is_authenticated %}
-        <p class="lead">Hi, {{ user.username }}</p>
-        <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+    <p class="lead">Hi, {{ user.username }}</p>
+    <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
     {% else %}
-        <p class="lead">You are not logged in..</p>
-        <hr class="my-2">
-        
-            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Sign in</a>
-       
-            <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
+    <p class="lead">You are not logged in..</p>
+    <hr class="my-2">
+
+    <a class="btn btn-primary" href="{% url 'login' %}" role="button">Sign in</a>
+
+    <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
     {% endif %}
 </div>
 {% endblock content %}
