@@ -6,7 +6,9 @@ Homepage
 {% block content %}
 <div class="jumbotron">
     <h1 class="display-3">Book Store</h1>
-    <img src="{% static 'images/django.jpeg' %}" alt="">
+    <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    </form>
     {% if user.is_authenticated %}
     <p class="lead">Hi, {{ user.username }}</p>
     <a class="btn btn-primary" href="{% url 'account_logout' %}" role="button">Logout</a>
